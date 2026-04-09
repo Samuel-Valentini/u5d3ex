@@ -4,6 +4,8 @@ package samuelvalentini.u5d3ex;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -66,5 +68,26 @@ class U5D3ExApplicationTests {
         assertEquals(OrderStatus.SERVED, order.getOrderStatus());
     }
 
+    @ParameterizedTest
+    @CsvSource({"ham, onions, 6.67", "pineapple, blueCheese, 6.98", "ham, ham, 6.97"})
+    void pizzaPrice(String firstTopping, String secondTopping, double expectedResult) {
+        Topping first = ctx.getBean(firstTopping, Topping.class);
+        Topping second = ctx.getBean(secondTopping, Topping.class);
+        Pizza pizza = new Pizza("pizza", List.of(first, second));
+        assertEquals(expectedResult, (double) (Math.round(pizza.getPrice() * 100)) / 100);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"ham, onions", "pineapple, blueCheese", "ham, ham"})
+    void pizzaPriceAutoTotal(String firstTopping, String secondTopping) {
+        Topping first = ctx.getBean(firstTopping, Topping.class);
+        Topping second = ctx.getBean(secondTopping, Topping.class);
+        double result = first.getPrice() + second.getPrice() + 4.99;
+        Pizza pizza = new Pizza("pizza", List.of(first, second));
+        assertEquals(result, pizza.getPrice());
+    }
 
 }
+
+
+
