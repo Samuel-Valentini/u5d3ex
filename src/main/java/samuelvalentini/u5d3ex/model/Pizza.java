@@ -21,6 +21,14 @@ public class Pizza extends MenuItem {
         this.size = size;
     }
 
+    public static double getMargheritaPrice() {
+        return (MARGHERITA_PRICE);
+    }
+
+    public static double getMargheritaCalories() {
+        return (MARGHERITA_CALORIES);
+    }
+
     public List<Topping> getToppings() {
         return toppings;
     }

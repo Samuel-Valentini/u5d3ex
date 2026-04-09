@@ -14,6 +14,7 @@ import samuelvalentini.u5d3ex.model.*;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static samuelvalentini.u5d3ex.model.Pizza.getMargheritaPrice;
 
 
 @SpringBootTest
@@ -82,7 +83,7 @@ class U5D3ExApplicationTests {
     void pizzaPriceAutoTotal(String firstTopping, String secondTopping) {
         Topping first = ctx.getBean(firstTopping, Topping.class);
         Topping second = ctx.getBean(secondTopping, Topping.class);
-        double result = first.getPrice() + second.getPrice() + 4.99;
+        double result = first.getPrice() + second.getPrice() + getMargheritaPrice();
         Pizza pizza = new Pizza("pizza", List.of(first, second));
         assertEquals(result, pizza.getPrice());
     }
