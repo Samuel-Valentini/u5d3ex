@@ -7,10 +7,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import samuelvalentini.u5d3ex.model.Order;
-import samuelvalentini.u5d3ex.model.OrderStatus;
-import samuelvalentini.u5d3ex.model.Pizza;
-import samuelvalentini.u5d3ex.model.Table;
+import samuelvalentini.u5d3ex.model.*;
 
 import java.util.List;
 
@@ -46,6 +43,16 @@ class U5D3ExApplicationTests {
     void orderPriceMultiplePizzasChecker() {
         Order order = new Order(List.of(ctx.getBean("hawaiianPizza", Pizza.class), ctx.getBean("salamiPizza", Pizza.class)), coverCharge, 1, OrderStatus.IN_PROGRESS, ctx.getBean("table1", Table.class));
         assertEquals(14.25, order.getTotalAmount());
+    }
+
+    @Test
+    void pizzaSizeTester() {
+        Pizza pizza1 = new Pizza("testPizza", List.of());
+        Pizza pizza2 = new Pizza("testPizzaXL", List.of(), PizzaSize.XL);
+
+        assertEquals((int) Math.round(pizza1.getCalories() * 1.95), pizza2.getCalories());
+        assertEquals(pizza1.getPrice() * 1.4, pizza2.getPrice());
+
     }
 
 }
