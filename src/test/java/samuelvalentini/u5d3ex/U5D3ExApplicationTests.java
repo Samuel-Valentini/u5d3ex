@@ -55,4 +55,16 @@ class U5D3ExApplicationTests {
 
     }
 
+    @Test
+    void orderStatusChanger() {
+        Order order = new Order(List.of(ctx.getBean("hawaiianPizza", Pizza.class)), coverCharge, 1, OrderStatus.IN_PROGRESS, ctx.getBean("table1", Table.class));
+        order.setOrderStatus(OrderStatus.READY);
+        assertEquals(OrderStatus.READY, order.getOrderStatus());
+        order.setOrderStatus(OrderStatus.IN_PROGRESS);
+        assertEquals(OrderStatus.IN_PROGRESS, order.getOrderStatus());
+        order.setOrderStatus(OrderStatus.SERVED);
+        assertEquals(OrderStatus.SERVED, order.getOrderStatus());
+    }
+
+
 }
