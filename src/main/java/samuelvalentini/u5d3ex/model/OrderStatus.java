@@ -1,4 +1,4 @@
-package samuelvalentini.u5d2ex.model;
+package samuelvalentini.u5d3ex.model;
 
 public enum OrderStatus {
     IN_PROGRESS,

@@ -1,9 +1,9 @@
-package samuelvalentini.u5d2ex.config;
+package samuelvalentini.u5d3ex.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import samuelvalentini.u5d2ex.model.*;
+import samuelvalentini.u5d3ex.model.*;
 
 import java.util.List;
 

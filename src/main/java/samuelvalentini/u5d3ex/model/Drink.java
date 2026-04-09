@@ -1,4 +1,4 @@
-package samuelvalentini.u5d2ex.model;
+package samuelvalentini.u5d3ex.model;
 
 public class Drink extends MenuItem {
     private final String description;

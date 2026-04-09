@@ -1,4 +1,4 @@
-package samuelvalentini.u5d2ex;
+package samuelvalentini.u5d3ex;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
